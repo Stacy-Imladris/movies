@@ -6,4 +6,6 @@ export const rootReducer = combineReducers({
     movies: moviesReducer,
 })
 
-export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
+
+window.store = store

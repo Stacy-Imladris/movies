@@ -37,11 +37,12 @@ export const requestMovies = (title, page) => async dispatch => {
     dispatch(moviesActions.toggleIsLoading(true))
     dispatch(moviesActions.setTitleForSearch(title))
     dispatch(moviesActions.setCurrentPage(page))
+    dispatch(moviesActions.setError(''))
     try {
         const data = await movieAPI.searchFilmsByTitle(title, page)
         if (data.Response === 'False') {
             dispatch(moviesActions.setError(true))
-            dispatch(moviesActions.setTitleForSearch(''))
+            //dispatch(moviesActions.setTitleForSearch(''))
             dispatch(moviesActions.setMovies([]))
         } else {
             dispatch(moviesActions.setMovies(data.Search))

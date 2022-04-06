@@ -1,0 +1,28 @@
+@import "../../common/styles/sass/variables";
+
+.container {
+  background-color: $bgSecondColor;
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding-bottom: 15px;
+  @media screen and (max-width: 470px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  & div {
+    width: 180px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    & span {
+      display: inline-block;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+    .selectedPage {
+      font-weight: bold;
+    }
+  }
+}

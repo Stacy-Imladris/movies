@@ -2,7 +2,7 @@
 
 .resultBlock {
     background-color: $bgSecondColor;
-
+    min-height: 60px;
     .searchContainer {
         padding: 10px 0;
 
@@ -10,7 +10,7 @@
             color: $textColor;
             width: 80%;
             text-align: left;
-            font-size: 24px;
+            font-size: 22px;
         }
     }
 }

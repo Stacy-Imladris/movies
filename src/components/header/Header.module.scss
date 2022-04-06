@@ -1,26 +1,40 @@
 @import "../../common/styles/sass/variables";
 
-.headerContainer {
+.headerBlock {
     width: 100%;
     background-color: $bgColor;
     color: $textColor;
     padding: 15px 0;
     position: sticky;
     top: 0;
-    .title {
-        font-size: 26px;
-        width: 30%;
-        text-align: left;
-        & h2 {
-            margin: 0;
+    .headerContainer {
+        @media screen and (max-width: 1030px) {
+            flex-direction: column;
+            margin: auto;
         }
-    }
-    .search {
-        width: 300px;
-        margin: 0 30px;
-    }
-    .user {
-        width: 30%;
-        text-align: right;
+        & img {
+            width: 25px;
+            height: 25px;
+        }
+        .title {
+            font-size: 24px;
+            text-align: left;
+            & h2 {
+                margin: 0;
+            }
+        }
+        .search {
+            width: 270px;
+            margin: 10px 30px;
+        }
+        .user {
+            display: flex;
+            justify-content: flex-end;
+            align-content: center;
+            min-width: 100px;
+            & div {
+                margin: 0 5px;
+            }
+        }
     }
 }

@@ -5,18 +5,17 @@
   background-color: $bgSecondColor;
 
   .moviesContainer {
-    flex-direction: column;
     justify-content: flex-start;
 
     .movies {
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       flex-wrap: wrap;
       box-sizing: border-box;
       margin-top: 5px;
 
-      @media screen and (max-width: 771px) {
+      @media screen and (max-width: 645px) {
         justify-content: center;
       }
     }
