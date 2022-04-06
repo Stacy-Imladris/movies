@@ -1,0 +1,24 @@
+@import "../../common/styles/sass/variables";
+
+.headerContainer {
+    width: 100%;
+    background-color: $bgColor;
+    color: $textColor;
+    padding: 15px 0;
+    .title {
+        font-size: 26px;
+        width: 30%;
+        text-align: left;
+        & h2 {
+            margin: 0;
+        }
+    }
+    .search {
+        width: 300px;
+        margin: 0 30px;
+    }
+    .user {
+        width: 30%;
+        text-align: right;
+    }
+}

@@ -1,0 +1,37 @@
+@import '../../../common/styles/sass/mixins';
+@import '../../../common/styles/sass/variables';
+
+.movie {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+    min-width: 25%;
+    padding: 20px 10px;
+    width: 250px;
+    margin: 0 auto;
+    .image {
+        height: 250px;
+        width: 170px;
+        aspect-ratio: auto 170 / 250;
+        margin: 0 auto 10px;
+        & img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .title {
+        letter-spacing: 1px;
+        font-weight: 700;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        @include text('Times New Roman', 18px, 1.2, $textColor);
+    }
+    .description {
+        padding: 0 30px;
+        text-align: left;
+        font-weight: 400;
+        @include text('Times New Roman', 16px, 1.8, $textColor);
+    }
+}
