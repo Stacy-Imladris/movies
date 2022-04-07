@@ -1,16 +1,16 @@
 @import "../../common/styles/sass/variables.scss";
 
 .resultBlock {
-    background-color: $bgSecondColor;
-    min-height: 60px;
-    .searchContainer {
-        padding: 10px 0;
+  min-height: 60px;
 
-        .searching {
-            color: $textColor;
-            width: 80%;
-            text-align: left;
-            font-size: 22px;
-        }
+  .searchContainer {
+    padding: 10px 0;
+
+    .searching {
+      color: $textColor;
+      width: 80%;
+      text-align: left;
+      font-size: 22px;
     }
+  }
 }

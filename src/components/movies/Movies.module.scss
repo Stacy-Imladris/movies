@@ -1,9 +1,6 @@
 @import "../../common/styles/sass/variables";
 
 .moviesBlock {
-  min-height: 100vh;
-  background-color: $bgSecondColor;
-
   .moviesContainer {
     justify-content: flex-start;
 
