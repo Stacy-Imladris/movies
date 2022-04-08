@@ -49,6 +49,7 @@ export const requestMovies = (title, page) => async dispatch => {
   dispatch(moviesActions.toggleIsLoading(true));
   dispatch(moviesActions.setTitleForSearch(title));
   dispatch(moviesActions.setCurrentPage(page));
+  dispatch(moviesActions.setError(false));
   try {
     const data = await movieAPI.searchFilmsByTitle(title, page);
     if (data.Response === 'False') {
