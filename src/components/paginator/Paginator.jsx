@@ -47,7 +47,7 @@ export const Paginator = memo(() => {
                 {' '}
                 1
               </button>
-              <button type="button">...</button>
+              <span>...</span>
             </>
           )}
         </div>
@@ -67,7 +67,7 @@ export const Paginator = memo(() => {
         <div>
           {currentPage < pages.length - 2 && (
             <>
-              <button type="button">...</button>
+              <span>...</span>
               <button
                 type="button"
                 className={currentPage === pages.length ? s.selectedPage : ''}
