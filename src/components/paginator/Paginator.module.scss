@@ -1,27 +1,46 @@
 @import "../../common/styles/sass/variables";
 
-.container {
-  display: flex;
-  justify-content: center;
-  color: white;
-  padding-bottom: 15px;
-  @media screen and (max-width: 470px) {
-    flex-direction: column;
-    align-items: center;
-  }
-  & div {
-    width: 180px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
+.paginatorContainer {
+  position: sticky;
+  bottom: 0;
+  background-color: $bgSecondColor;
 
-    & span {
-      display: inline-block;
-      cursor: pointer;
-      padding: 5px 10px;
+  .container {
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 5px 0;
+
+    @media screen and (max-width: 470px) {
+      flex-direction: column;
+      align-items: center;
     }
-    .selectedPage {
-      font-weight: bold;
+
+    & div {
+      width: 180px;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+
+      & button {
+        cursor: pointer;
+        border: none;
+        background-color: $bgSecondColor;
+        outline: none;
+        color: $textColor;
+        padding: 5px 10px;
+        border-radius: 20%;
+        min-width: 40px;
+
+        &:hover {
+          background-color: $thirdColor;
+        }
+      }
+
+      .selectedPage {
+        font-weight: bold;
+        background-color: $thirdColor;
+      }
     }
   }
 }

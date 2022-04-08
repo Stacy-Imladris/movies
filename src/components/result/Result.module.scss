@@ -8,9 +8,13 @@
 
     .searching {
       color: $textColor;
-      width: 80%;
+      width: 100%;
       text-align: left;
       font-size: 22px;
+
+      .error {
+        color: #f89292
+      }
     }
   }
 }

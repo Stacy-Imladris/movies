@@ -1,40 +1,71 @@
 @import "../../common/styles/sass/variables";
+@import "../../common/styles/sass/mixins";
 
 .headerBlock {
-    width: 100%;
-    background-color: $bgSecondColor;
-    color: $textColor;
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    .headerContainer {
-        @media screen and (max-width: 1030px) {
-            flex-direction: column;
-            margin: auto;
-        }
-        & img {
-            width: 25px;
-            height: 25px;
-        }
-        .title {
-            font-size: 24px;
-            text-align: left;
-            & h2 {
-                margin: 0;
-            }
-        }
-        .search {
-            width: 270px;
-            margin: 10px 30px;
-        }
-        .user {
-            display: flex;
-            justify-content: flex-end;
-            align-content: center;
-            min-width: 100px;
-            & div {
-                margin: 0 5px;
-            }
-        }
+  width: 100%;
+  background-color: $bgSecondColor;
+  color: $textColor;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+
+  .headerContainer {
+    @media screen and (max-width: 1100px) {
+      flex-direction: column;
+      margin: auto;
     }
+
+    @media screen and (max-width: 460px) {
+      width: 100%;
+    }
+
+    & img {
+      width: 25px;
+      height: 25px;
+    }
+
+    .title {
+      font-size: 24px;
+      text-align: left;
+      @include text(24px, 1.2);
+
+      & h2 {
+        margin: 0;
+      }
+    }
+
+    .searchBlock {
+      position: relative;
+
+      .search {
+        width: 270px;
+        margin: 10px 30px;
+        padding: 7px 15px;
+        border-radius: 20px;
+      }
+
+      .deleteIcon {
+        position: absolute;
+        top: 15px;
+        right: 39px;
+        border: none;
+        background-color: white;
+        outline: none;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+    }
+
+    .user {
+      display: flex;
+      justify-content: flex-end;
+      align-content: center;
+      min-width: 100px;
+      @include text(20px, 1.2);
+
+      & div {
+        margin: 0 5px;
+      }
+    }
+  }
 }

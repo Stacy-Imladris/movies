@@ -1,0 +1,27 @@
+@import "../../common/styles/sass/variables";
+
+.error {
+  text-align: center;
+  color: $errorText;
+  padding: 15px;
+  width: 50%;
+  border: $errorText 3px solid;
+  border-radius: 30px;
+  margin: 10px auto;
+
+    .deleteIcon {
+      background-color: $bgColor;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 10px;
+      color: $errorText;
+      padding: 2px 10px 5px 10px;
+      margin-left: 20px;
+      font-size: 26px;
+
+      &:hover {
+        background-color: $thirdColor;
+      }
+    }
+}

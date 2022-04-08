@@ -10,6 +10,11 @@
     padding: 20px 10px;
     width: 250px;
     margin: 0 auto;
+
+    &:hover {
+        background-color: $bgSecondColor;
+    }
+
     .image {
         height: 250px;
         width: 170px;
@@ -26,12 +31,12 @@
         display: block;
         margin-block-start: 1em;
         margin-block-end: 1em;
-        @include text('Times New Roman', 18px, 1.2, $textColor);
+        @include text(18px, 1.2);
     }
     .description {
         padding: 0 30px;
         text-align: left;
         font-weight: 400;
-        @include text('Times New Roman', 16px, 1.8, $textColor);
+        @include text(16px, 1.8);
     }
 }
