@@ -10,11 +10,19 @@ import s from './Header.module.scss';
 
 export const Header = memo(() => {
   const [title, setTitle] = useState('');
+  const [timerId, setTimerId] = useState(0);
 
   const dispatch = useDispatch();
 
+  const searchDebounce = title => {
+    setTitle(title);
+    clearTimeout(timerId);
+    const id = +setTimeout(dispatch, 500, requestMovies(title, 1));
+    setTimerId(id);
+  };
+
   const changeSearchTitle = e => {
-    setTitle(e.currentTarget.value);
+    searchDebounce(e.currentTarget.value);
   };
 
   const deleteTextForSearch = () => {

@@ -12,7 +12,6 @@ export const Paginator = memo(() => {
   const titleForSearch = useSelector(state => state.movies.titleForSearch);
   const currentPage = useSelector(state => state.movies.currentPage);
   const dispatch = useDispatch();
-
   const pagesCount = Math.ceil(totalMoviesCount / 10);
 
   const pages = [];
@@ -45,7 +44,7 @@ export const Paginator = memo(() => {
                 onClick={() => onPageChanged(1)}
               >
                 {' '}
-                1
+                1{' '}
               </button>
               <span>...</span>
             </>
