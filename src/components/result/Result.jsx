@@ -1,15 +1,21 @@
 import { useSelector } from 'react-redux';
 
 import styleContainer from '../../common/styles/styles/Container.module.scss';
+import {
+  selectError,
+  selectIsLoading,
+  selectTitleForSearch,
+  selectTotalMoviesCount,
+} from '../../selectors/selectors';
 import { RequestError } from '../requestError/RequestError';
 
 import s from './Result.module.scss';
 
 export const Result = () => {
-  const titleForSearch = useSelector(state => state.movies.titleForSearch);
-  const totalMoviesCount = useSelector(state => state.movies.totalMoviesCount);
-  const error = useSelector(state => state.movies.error);
-  const isLoading = useSelector(state => state.movies.isLoading);
+  const titleForSearch = useSelector(selectTitleForSearch);
+  const totalMoviesCount = useSelector(selectTotalMoviesCount);
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
 
   return (
     <div className={s.resultBlock}>

@@ -3,11 +3,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { moviesActions } from '../../bll/moviesReducer';
+import { selectError } from '../../selectors/selectors';
 
 import s from './RequestError.module.scss';
 
 export const RequestError = () => {
-  const { error } = useSelector(state => state.movies.error);
+  const { error } = useSelector(selectError);
   const dispatch = useDispatch();
 
   const removeError = () => {

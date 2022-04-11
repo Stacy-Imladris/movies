@@ -1,14 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { requestMovies } from '../../bll/moviesReducer';
+import {
+  selectCurrentPage,
+  selectTitleForSearch,
+  selectTotalMoviesCount
+} from '../../selectors/selectors';
 import { getPagesForRender } from '../../utils/pages-helpers';
 
 import s from './Paginator.module.scss';
 
 export const Paginator = () => {
-  const totalMoviesCount = useSelector(state => state.movies.totalMoviesCount);
-  const titleForSearch = useSelector(state => state.movies.titleForSearch);
-  const currentPage = useSelector(state => state.movies.currentPage);
+  const totalMoviesCount = useSelector(selectTotalMoviesCount);
+  const titleForSearch = useSelector(selectTitleForSearch);
+  const currentPage = useSelector(selectCurrentPage);
   const dispatch = useDispatch();
   const pagesCount = Math.ceil(totalMoviesCount / 10);
 
