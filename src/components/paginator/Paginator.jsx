@@ -4,7 +4,7 @@ import { requestMovies } from '../../bll/moviesReducer';
 import {
   selectCurrentPage,
   selectTitleForSearch,
-  selectTotalMoviesCount
+  selectTotalMoviesCount,
 } from '../../selectors/selectors';
 import { getPagesForRender } from '../../utils/pages-helpers';
 
