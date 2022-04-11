@@ -1,5 +1,3 @@
-import React, { memo } from 'react';
-
 import { useSelector } from 'react-redux';
 
 import styleContainer from '../../common/styles/styles/Container.module.scss';
@@ -7,7 +5,7 @@ import { RequestError } from '../requestError/RequestError';
 
 import s from './Result.module.scss';
 
-export const Result = memo(() => {
+export const Result = () => {
   const titleForSearch = useSelector(state => state.movies.titleForSearch);
   const totalMoviesCount = useSelector(state => state.movies.totalMoviesCount);
   const error = useSelector(state => state.movies.error);
@@ -27,4 +25,4 @@ export const Result = memo(() => {
       </div>
     </div>
   );
-});
+};

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 import noPoster from '../../../assets/images/no-poster.png';
 

@@ -1,5 +1,3 @@
-import React, { memo } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import { requestMovies } from '../../bll/moviesReducer';
@@ -7,7 +5,7 @@ import { getPagesForRender } from '../../utils/pages-helpers';
 
 import s from './Paginator.module.scss';
 
-export const Paginator = memo(() => {
+export const Paginator = () => {
   const totalMoviesCount = useSelector(state => state.movies.totalMoviesCount);
   const titleForSearch = useSelector(state => state.movies.titleForSearch);
   const currentPage = useSelector(state => state.movies.currentPage);
@@ -84,4 +82,4 @@ export const Paginator = memo(() => {
       </div>
     </div>
   );
-});
+};

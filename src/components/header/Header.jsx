@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 
@@ -8,7 +8,7 @@ import styleContainer from '../../common/styles/styles/Container.module.scss';
 
 import s from './Header.module.scss';
 
-export const Header = memo(() => {
+export const Header = () => {
   const [title, setTitle] = useState('');
   const [timerId, setTimerId] = useState(0);
 
@@ -64,4 +64,4 @@ export const Header = memo(() => {
       </div>
     </div>
   );
-});
+};

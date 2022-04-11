@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -6,7 +6,7 @@ import { moviesActions } from '../../bll/moviesReducer';
 
 import s from './RequestError.module.scss';
 
-export const RequestError = memo(() => {
+export const RequestError = () => {
   const { error } = useSelector(state => state.movies.error);
   const dispatch = useDispatch();
 
@@ -29,4 +29,4 @@ export const RequestError = memo(() => {
       </button>
     </div>
   );
-});
+};
