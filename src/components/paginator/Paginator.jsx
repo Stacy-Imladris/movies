@@ -32,7 +32,7 @@ export const Paginator = () => {
     <div className={s.paginatorContainer}>
       <div className={s.container}>
         <div>
-          {currentPage > 3 && (
+          {currentPage > 3 && pagesCount > 5 && (
             <>
               <button
                 type="button"
@@ -67,7 +67,7 @@ export const Paginator = () => {
           ))}
         </div>
         <div>
-          {currentPage < pages.length - 2 && (
+          {currentPage < pages.length - 2 && pagesCount > 5 && (
             <>
               <span>...</span>
               <button
