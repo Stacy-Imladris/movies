@@ -2,6 +2,9 @@ export const getPagesForRender = (pages, currentPage, pagesCount) => {
   if (currentPage <= 3) {
     return [1, 2, 3, 4, 5].filter(f => f <= pagesCount);
   }
+  if (pagesCount <= 5) {
+    return pages.filter(f => f !== 0);
+  }
   if (currentPage > pages.length - 3) {
     return [
       pages.length - 4,
