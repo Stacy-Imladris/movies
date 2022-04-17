@@ -50,8 +50,9 @@ export const requestMovies = (title, page) => async dispatch => {
   dispatch(moviesActions.setTitleForSearch(title));
   dispatch(moviesActions.setCurrentPage(page));
   dispatch(moviesActions.setError(false));
+  const titleForSearch = title.replace(/\s+/g, ' ').trim();
   try {
-    const data = await movieAPI.searchFilmsByTitle(title, page);
+    const data = await movieAPI.searchFilmsByTitle(titleForSearch, page);
     if (data.Response === 'False') {
       dispatch(moviesActions.setError(true));
       dispatch(moviesActions.setMovies([]));

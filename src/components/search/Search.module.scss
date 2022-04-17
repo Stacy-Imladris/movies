@@ -1,0 +1,21 @@
+.searchBlock {
+  position: relative;
+
+  .search {
+    width: 270px;
+    margin: 10px 30px;
+    padding: 7px 15px;
+    border-radius: 20px;
+  }
+
+  .deleteIcon {
+    position: absolute;
+    top: 15px;
+    right: 39px;
+    border: none;
+    background-color: white;
+    outline: none;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+}
