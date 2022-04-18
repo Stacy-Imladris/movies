@@ -4,17 +4,14 @@ import noPoster from '../../../assets/images/no-poster.png';
 
 import s from './Movie.module.scss';
 
-export const Movie = memo(({ movie }) => (
+export const Movie = memo(({ title, year, imdbID, type, poster }) => (
   <div className={s.movie}>
     <div className={s.image}>
-      <img
-        src={movie.Poster !== 'N/A' ? movie.Poster : noPoster}
-        alt={`Poster ${movie.Title}`}
-      />
+      <img src={poster !== 'N/A' ? poster : noPoster} alt={`Poster ${title}`} />
     </div>
-    <div className={s.title}>{movie.Title}</div>
-    <div className={s.description}>Year: {movie.Year}</div>
-    <div className={s.description}>imdbID: {movie.imdbID}</div>
-    <div className={s.description}>Type: {movie.Type}</div>
+    <div className={s.title}>{title}</div>
+    <div className={s.description}>Year: {year}</div>
+    <div className={s.description}>imdbID: {imdbID}</div>
+    <div className={s.description}>Type: {type}</div>
   </div>
 ));

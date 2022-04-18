@@ -21,5 +21,5 @@ UI start in http://localhost:3000/
 
 ### `yarn test`
 
-###Author: Anastasiya Belikova
+### Author: Anastasiya Belikova
 If you need more information, please ask [me](https://www.linkedin.com/in/anastasiya-belikova-9687b8234/)

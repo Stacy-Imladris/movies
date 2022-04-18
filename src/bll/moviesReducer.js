@@ -1,12 +1,13 @@
 import { movieAPI } from '../api/movieAPI';
+import { getTrimmedTitle } from '../utils/getTrimmedTitle';
 
 const moviesInitialState = {
   movies: [],
   totalMoviesCount: 0,
   currentPage: 1,
   isLoading: false,
-  error: false,
-  titleForSearch: '',
+  isSearchError: false,
+  searchTitle: '',
 };
 
 export const moviesReducer = (state = moviesInitialState, action) => {
@@ -15,8 +16,8 @@ export const moviesReducer = (state = moviesInitialState, action) => {
     case 'MOVIES/SET_TOTAL_MOVIES_COUNT':
     case 'MOVIES/SET_CURRENT_PAGE':
     case 'MOVIES/TOGGLE_IS_LOADING':
-    case 'MOVIES/SET_ERROR':
-    case 'MOVIES/SET_TITLE_FOR_SEARCH':
+    case 'MOVIES/SET_IS_SEARCH_ERROR':
+    case 'MOVIES/SET_SEARCH_TITLE':
       return { ...state, ...action.payload };
     default:
       return state;
@@ -37,33 +38,36 @@ export const moviesActions = {
     type: 'MOVIES/TOGGLE_IS_LOADING',
     payload: { isLoading },
   }),
-  setError: error => ({ type: 'MOVIES/SET_ERROR', payload: { error } }),
-  setTitleForSearch: titleForSearch => ({
+  setIsSearchError: isSearchError => ({
+    type: 'MOVIES/SET_IS_SEARCH_ERROR',
+    payload: { isSearchError },
+  }),
+  setSearchTitle: searchTitle => ({
     type: 'MOVIES/SET_TITLE_FOR_SEARCH',
-    payload: { titleForSearch },
+    payload: { searchTitle },
   }),
 };
 
 // thunk
 export const requestMovies = (title, page) => async dispatch => {
   dispatch(moviesActions.toggleIsLoading(true));
-  dispatch(moviesActions.setTitleForSearch(title));
+  dispatch(moviesActions.setSearchTitle(title));
   dispatch(moviesActions.setCurrentPage(page));
-  dispatch(moviesActions.setError(false));
-  const titleForSearch = title.replace(/\s+/g, ' ').trim();
+  dispatch(moviesActions.setIsSearchError(false));
+  const searchTitle = getTrimmedTitle(title);
   try {
-    const data = await movieAPI.searchFilmsByTitle(titleForSearch, page);
+    const data = await movieAPI.searchFilmsByTitle(searchTitle, page);
     if (data.Response === 'False') {
-      dispatch(moviesActions.setError(true));
+      dispatch(moviesActions.setIsSearchError(true));
       dispatch(moviesActions.setMovies([]));
       dispatch(moviesActions.setTotalMoviesCount(0));
-      dispatch(moviesActions.setTitleForSearch(''));
+      dispatch(moviesActions.setSearchTitle(''));
     } else {
       dispatch(moviesActions.setMovies(data.Search));
       dispatch(moviesActions.setTotalMoviesCount(data.totalResults));
     }
   } catch (e) {
-    dispatch(moviesActions.setError(true));
+    dispatch(moviesActions.setIsSearchError(true));
   } finally {
     dispatch(moviesActions.toggleIsLoading(false));
   }

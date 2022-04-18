@@ -16,8 +16,15 @@ export const Movies = () => {
       <div className={`${styleContainer.container} ${s.moviesContainer}`}>
         {isLoading && <Preloader />}
         <div className={s.movies}>
-          {movies.map(m => (
-            <Movie key={m.imdbID} movie={m} />
+          {movies.map(({ Title, Year, imdbID, Type, Poster }) => (
+            <Movie
+              key={imdbID}
+              imdbID={imdbID}
+              title={Title}
+              year={Year}
+              type={Type}
+              poster={Poster}
+            />
           ))}
         </div>
       </div>

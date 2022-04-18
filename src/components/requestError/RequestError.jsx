@@ -3,24 +3,24 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { moviesActions } from '../../bll/moviesReducer';
-import { selectError } from '../../selectors/selectors';
+import { selectIsSearchError } from '../../selectors/selectors';
 
 import s from './RequestError.module.scss';
 
 export const RequestError = () => {
-  const { error } = useSelector(selectError);
+  const isSearchError = useSelector(selectIsSearchError);
   const dispatch = useDispatch();
 
   const removeError = () => {
-    dispatch(moviesActions.setError(false));
+    dispatch(moviesActions.setIsSearchError(false));
   };
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      dispatch(moviesActions.setError(false));
-    }, 7000);
+      dispatch(moviesActions.setIsSearchError(false));
+    }, 5000);
     return () => clearTimeout(timerId);
-  }, [error, dispatch]);
+  }, [isSearchError, dispatch]);
 
   return (
     <div className={s.error}>
