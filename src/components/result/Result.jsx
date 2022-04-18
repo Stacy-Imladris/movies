@@ -6,7 +6,7 @@ import {
   selectIsSearchError,
   selectSearchTitle,
   selectTotalMoviesCount,
-} from '../../selectors/selectors';
+} from '../../store/selectors';
 import { RequestError } from '../requestError/RequestError';
 
 import s from './Result.module.scss';

@@ -1,9 +1,9 @@
-export const getPagesForRender = (pages, currentPage, pagesCount) => {
+export const getPages = (pages, currentPage, pagesCount) => {
   if (currentPage <= 3) {
-    return [1, 2, 3, 4, 5].filter(f => f <= pagesCount);
+    return [1, 2, 3, 4, 5].filter(page => page <= pagesCount);
   }
   if (pagesCount <= 5) {
-    return pages.filter(f => f !== 0);
+    return pages.filter(page => page !== 0);
   }
   if (currentPage > pages.length - 3) {
     return [

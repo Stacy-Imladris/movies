@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { Preloader } from '../../common/preloader/Preloader';
 import styleContainer from '../../common/styles/styles/Container.module.scss';
-import { selectIsLoading, selectMovies } from '../../selectors/selectors';
+import { selectIsLoading, selectMovies } from '../../store/selectors';
 
 import { Movie } from './movie/Movie';
 import s from './Movies.module.scss';

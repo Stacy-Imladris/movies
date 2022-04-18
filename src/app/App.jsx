@@ -8,7 +8,7 @@ import {
   selectIsLoading,
   selectIsSearchError,
   selectSearchTitle,
-} from '../selectors/selectors';
+} from '../store/selectors';
 
 import s from './App.module.scss';
 

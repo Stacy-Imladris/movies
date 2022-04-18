@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { requestMovies } from '../../bll/moviesReducer';
+import { requestMovies } from '../../store/moviesReducer';
 import {
   selectCurrentPage,
   selectSearchTitle,
   selectTotalMoviesCount,
-} from '../../selectors/selectors';
-import { getPagesForRender } from '../../utils/pages-helpers';
+} from '../../store/selectors';
+import { getPages } from '../../utils/getPages';
 
 import s from './Paginator.module.scss';
 
@@ -14,15 +14,18 @@ export const Paginator = () => {
   const totalMoviesCount = useSelector(selectTotalMoviesCount);
   const searchTitle = useSelector(selectSearchTitle);
   const currentPage = useSelector(selectCurrentPage);
+
   const dispatch = useDispatch();
-  const pagesCount = Math.ceil(totalMoviesCount / 10);
+
+  const responsePagesCount = 10;
+  const pagesCount = Math.ceil(totalMoviesCount / responsePagesCount);
 
   const pages = [];
   for (let i = 1; i <= pagesCount; i += 1) {
     pages.push(i);
   }
 
-  const pagesForRender = getPagesForRender(pages, currentPage, pagesCount);
+  const pagesForRender = getPages(pages, currentPage, pagesCount);
 
   const onPageChanged = page => {
     dispatch(requestMovies(searchTitle, page));

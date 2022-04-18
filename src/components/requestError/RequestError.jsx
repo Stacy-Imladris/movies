@@ -1,31 +1,31 @@
 import { useEffect } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { moviesActions } from '../../bll/moviesReducer';
-import { selectIsSearchError } from '../../selectors/selectors';
+import { moviesActions } from '../../store/moviesReducer';
 
 import s from './RequestError.module.scss';
 
 export const RequestError = () => {
-  const isSearchError = useSelector(selectIsSearchError);
   const dispatch = useDispatch();
 
-  const removeError = () => {
+  const onClickHideError = () => {
     dispatch(moviesActions.setIsSearchError(false));
   };
+
+  const errorLifetime = 3000;
 
   useEffect(() => {
     const timerId = setTimeout(() => {
       dispatch(moviesActions.setIsSearchError(false));
-    }, 5000);
+    }, errorLifetime);
     return () => clearTimeout(timerId);
-  }, [isSearchError, dispatch]);
+  }, [dispatch]);
 
   return (
     <div className={s.error}>
       <span>No results were found for your request</span>
-      <button type="button" className={s.deleteIcon} onClick={removeError}>
+      <button type="button" className={s.deleteIcon} onClick={onClickHideError}>
         ✘
       </button>
     </div>

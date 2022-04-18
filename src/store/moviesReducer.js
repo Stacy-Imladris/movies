@@ -43,7 +43,7 @@ export const moviesActions = {
     payload: { isSearchError },
   }),
   setSearchTitle: searchTitle => ({
-    type: 'MOVIES/SET_TITLE_FOR_SEARCH',
+    type: 'MOVIES/SET_SEARCH_TITLE',
     payload: { searchTitle },
   }),
 };
