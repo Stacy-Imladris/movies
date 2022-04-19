@@ -1,0 +1,21 @@
+@import '../../../common/styles/sass/variables';
+
+.button {
+  cursor: pointer;
+  border: none;
+  background-color: $bgSecondColor;
+  outline: none;
+  color: $textColor;
+  padding: 5px 10px;
+  border-radius: 20%;
+  min-width: 40px;
+
+  &:hover {
+    background-color: $thirdColor;
+  }
+}
+
+.selectedPage {
+  font-weight: bold;
+  background-color: $thirdColor;
+}

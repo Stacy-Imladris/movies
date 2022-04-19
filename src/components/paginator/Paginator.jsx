@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import { requestMovies } from '../../store/moviesReducer';
@@ -8,6 +10,7 @@ import {
 } from '../../store/selectors';
 import { getPages } from '../../utils/getPages';
 
+import { PaginationButton } from './paginationButton/PaginationButton';
 import s from './Paginator.module.scss';
 
 export const Paginator = () => {
@@ -19,17 +22,22 @@ export const Paginator = () => {
 
   const responsePagesCount = 10;
   const pagesCount = Math.ceil(totalMoviesCount / responsePagesCount);
-
   const pages = [];
+
   for (let i = 1; i <= pagesCount; i += 1) {
     pages.push(i);
   }
 
+  const pagesLength = pages.length;
+
   const pagesForRender = getPages(pages, currentPage, pagesCount);
 
-  const onPageChanged = page => {
-    dispatch(requestMovies(searchTitle, page));
-  };
+  const onPageChanged = useCallback(
+    page => {
+      dispatch(requestMovies(searchTitle, page));
+    },
+    [dispatch, searchTitle],
+  );
 
   return (
     <div className={s.paginatorContainer}>
@@ -37,53 +45,47 @@ export const Paginator = () => {
         <div>
           {currentPage > 3 && pagesCount > 5 && (
             <>
-              <button
-                type="button"
-                tabIndex={0}
-                onClick={() => onPageChanged(currentPage - 1)}
-              >
-                Previous
-              </button>
-              <button
-                type="button"
-                className={currentPage === 1 ? s.selectedPage : ''}
-                onClick={() => onPageChanged(1)}
-              >
-                {' '}
-                1{' '}
-              </button>
+              <PaginationButton
+                onPageChanged={onPageChanged}
+                value={currentPage - 1}
+                buttonName="Previous"
+              />
+              <PaginationButton
+                onPageChanged={onPageChanged}
+                value={1}
+                buttonName={` ${1} `}
+                isSelected={currentPage === 1}
+              />
               <span>...</span>
             </>
           )}
         </div>
         <div>
           {pagesForRender.map(p => (
-            <button
-              type="button"
-              className={currentPage === p ? s.selectedPage : ''}
-              onClick={() => onPageChanged(p)}
+            <PaginationButton
               key={p}
-            >
-              {' '}
-              {p}{' '}
-            </button>
+              onPageChanged={onPageChanged}
+              value={p}
+              buttonName={` ${p} `}
+              isSelected={currentPage === p}
+            />
           ))}
         </div>
         <div>
-          {currentPage < pages.length - 2 && pagesCount > 5 && (
+          {currentPage < pagesLength - 2 && pagesCount > 5 && (
             <>
               <span>...</span>
-              <button
-                type="button"
-                className={currentPage === pages.length ? s.selectedPage : ''}
-                onClick={() => onPageChanged(pages.length)}
-              >
-                {' '}
-                {pages.length}{' '}
-              </button>
-              <button type="button" onClick={() => onPageChanged(currentPage + 1)}>
-                Next
-              </button>
+              <PaginationButton
+                onPageChanged={onPageChanged}
+                value={pagesLength}
+                buttonName={` ${pagesLength} `}
+                isSelected={currentPage === pagesLength}
+              />
+              <PaginationButton
+                onPageChanged={onPageChanged}
+                value={currentPage + 1}
+                buttonName="Next"
+              />
             </>
           )}
         </div>
